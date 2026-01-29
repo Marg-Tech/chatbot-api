@@ -1,6 +1,42 @@
 @ChatbotApi_HostAddress = http://localhost:5178
 
-GET {{ChatbotApi_HostAddress}}/weatherforecast/
+### Get all messages
+GET {{ChatbotApi_HostAddress}}/api/messages
 Accept: application/json
 
 ###
+
+### Get messages with limit
+GET {{ChatbotApi_HostAddress}}/api/messages?limit=10
+Accept: application/json
+
+###
+
+### Get message by ID
+GET {{ChatbotApi_HostAddress}}/api/messages/1
+Accept: application/json
+
+###
+
+### Send a message
+POST {{ChatbotApi_HostAddress}}/api/messages
+Content-Type: application/json
+
+{
+  "sender": "User1",
+  "content": "Hello, chatbot!"
+}
+
+###
+
+### Send another message
+POST {{ChatbotApi_HostAddress}}/api/messages
+Content-Type: application/json
+
+{
+  "sender": "Bot",
+  "content": "Hi there! How can I help you?"
+}
+
+###
+

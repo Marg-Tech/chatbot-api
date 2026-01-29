@@ -31,9 +31,8 @@ public class MessageService : IMessageService
         lock (_lock)
         {
             var messages = _messages
-                .OrderByDescending(m => m.Timestamp)
-                .Take(limit)
-                .Reverse()
+                .OrderBy(m => m.Timestamp)
+                .TakeLast(limit)
                 .ToList();
             return Task.FromResult<IEnumerable<Message>>(messages);
         }

@@ -46,8 +46,14 @@ public class MessagesController : ControllerBase
     /// <returns>List of messages</returns>
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<IEnumerable<Message>>> GetMessages([FromQuery] int limit = 100)
     {
+        if (limit <= 0 || limit > 1000)
+        {
+            return BadRequest("Limit must be between 1 and 1000");
+        }
+
         _logger.LogInformation("Getting messages with limit {Limit}", limit);
         var messages = await _messageService.GetMessagesAsync(limit);
         return Ok(messages);
