@@ -1,0 +1,12 @@
+<div class="chatbot-container">
+  <h1>Chatbot Demo</h1>
+  <div class="chat-window">
+    <div *ngFor="let msg of messages" class="chat-message" [ngClass]="msg.sender">
+      <strong>{{ msg.sender === 'user' ? 'You' : 'Bot' }}:</strong> {{ msg.text }}
+    </div>
+  </div>
+  <form (ngSubmit)="sendMessage()" class="chat-input-form">
+    <input [(ngModel)]="userInput" name="userInput" placeholder="Type your message..." autocomplete="off" required />
+    <button type="submit">Send</button>
+  </form>
+</div>
