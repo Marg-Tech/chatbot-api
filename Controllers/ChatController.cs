@@ -11,4 +11,11 @@ public class HealthController : ControllerBase
     {
         return Ok("OK");
     }
+
+    [HttpGet("version")]
+    public IActionResult GetVersion()
+    {
+       var version = typeof(Program).Assembly.GetName().Version?.ToString();
+     return Ok(version);
+    }
 }
